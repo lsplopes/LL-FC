@@ -30,12 +30,12 @@ module.exports = {
         references: {
           model: 'teams',
           key: 'id'
+        },
       },
       awayTeamGoals: {
         type: Sequelize.INTEGER,
         allowNull: false,
         field: "away_team_goals",
-        }
       },
       inProgress: {
         type: Sequelize.BOOLEAN,
