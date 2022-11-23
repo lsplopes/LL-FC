@@ -8,7 +8,12 @@ import User from '../database/models/UserModel';
 import {
   userDataMock,
   successRequest,
-  tokenMock
+  failedRequestByMissingPassword,
+  failedRequestByWrongPassword,
+  failedRequestByMissingEmail,
+  failedRequestByWrongEmail,
+  failedResponseByMissing,
+  failedResponseByWrong,
 } from './Mocks/UserMocks';
 
 import { Response } from 'superagent';
@@ -19,28 +24,75 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
+describe('/login endpoint tests: ', () => {
   let chaiHttpResponse: Response;
 
-  beforeEach(async () => {
-    sinon
-      .stub(User, "findOne")
-      .resolves(userDataMock as User);
-  });
+  it('return success', async () => {
+    before(async () => {
+      sinon
+        .stub(User, "findOne")
+        .resolves(userDataMock as User);
+    });
 
-  afterEach(()=>{
-    (User.findOne as sinon.SinonStub).restore();
-  })
+    after(()=>{
+      sinon.restore();
+    })
 
-  it('...', async () => {
     chaiHttpResponse = await chai
        .request(app).post('/login').send(successRequest)
 
     expect(chaiHttpResponse.status).to.be.equal(200);
-    expect(chaiHttpResponse.body).to.be.equal(tokenMock);
   });
 
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+  it('return fail by missing password', async () => {
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(failedRequestByMissingPassword)
+
+    expect(chaiHttpResponse.status).to.be.equal(400);
+    expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByMissing);
+  });
+
+  it('return fail by missing email', async () => {
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(failedRequestByMissingEmail)
+
+    expect(chaiHttpResponse.status).to.be.equal(400);
+    expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByMissing);
+  });
+
+  it('return fail by wrong password', async () => {
+    before(async () => {
+      sinon
+        .stub(User, "findOne")
+        .resolves(userDataMock as User);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(failedRequestByWrongPassword)
+
+    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByWrong);
+  });
+
+  it('return fail by wrong email', async () => {
+    before(async () => {
+      sinon
+        .stub(User, "findOne")
+        .resolves(null);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(failedRequestByWrongEmail)
+
+    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByWrong);
   });
 });
