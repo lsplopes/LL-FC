@@ -7,6 +7,7 @@ import App from '../app';
 import Teams from '../database/models/TeamsModel';
 import {
   succsessTeamGetAllMock,
+  succsessTeamGetByIdMock,
 } from './Mocks/TeamsMocks';
 
 import { Response } from 'superagent';
@@ -37,21 +38,21 @@ describe('/teams endpoint tests: ', () => {
     expect(chaiHttpResponse.status).to.be.equal(200);
   });
 
-  // it('return success', async () => {
-  //   before(async () => {
-  //     sinon
-  //       .stub(Teams, "findAll")
-  //       .resolves(succsessTeamGetAllMock as Teams[]);
-  //   });
+  it('return successfully all teams', async () => {
+    before(async () => {
+      sinon
+        .stub(Teams, "findByPk")
+        .resolves(succsessTeamGetByIdMock as Teams);
+    });
 
-  //   after(()=>{
-  //     sinon.restore();
-  //   })
+    after(()=>{
+      sinon.restore();
+    })
 
-  //   chaiHttpResponse = await chai
-  //      .request(app).post('/login').send(successRequest)
+    chaiHttpResponse = await chai
+       .request(app).get('/teams/1')
 
-  //   expect(chaiHttpResponse.status).to.be.equal(200);
-  // });
+    expect(chaiHttpResponse.status).to.be.equal(200);
+  });
   
 });

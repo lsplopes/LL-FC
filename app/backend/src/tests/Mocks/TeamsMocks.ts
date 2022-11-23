@@ -12,3 +12,8 @@ export const succsessTeamGetAllMock = [
     "teamName": "Botafogo"
   }
 ]
+
+export const succsessTeamGetByIdMock = {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  }
