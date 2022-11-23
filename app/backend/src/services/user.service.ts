@@ -14,7 +14,9 @@ async function login(credentials: UserCredentials) {
   if (!info || !compareSync(credentials.password, info.password)) {
     return { status: 401, data: { message: 'Incorrect email or password' } };
   }
-  const token = jwt.sign({ info }, process.env.JWT_SECRET as string, config);
+  const { password: _, ...userWithoutPassword } = info.dataValues;
+
+  const token = jwt.sign({ userWithoutPassword }, process.env.JWT_SECRET as string, config);
   const data = { token };
   return { status: 200, data };
 }

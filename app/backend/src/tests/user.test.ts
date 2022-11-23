@@ -14,6 +14,7 @@ import {
   failedRequestByWrongEmail,
   failedResponseByMissing,
   failedResponseByWrong,
+  successLoginValidateMock,
 } from './Mocks/UserMocks';
 
 import { Response } from 'superagent';
@@ -96,3 +97,28 @@ describe('/login endpoint tests: ', () => {
     expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByWrong);
   });
 });
+
+describe('Test of the /login/validate endpoint', () => {
+  let chaiHttpResponse: Response;
+
+  it('return success', async () => {
+    before(async () => {
+      sinon
+        .stub(User, "findOne")
+        .resolves(userDataMock as User);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(successRequest)
+
+    const chaiHttpResponse2 = await chai
+      .request(app).get('/login/validate')
+      .set('Authorization', chaiHttpResponse.body.token);
+
+    expect(chaiHttpResponse2.body).to.be.deep.equal(successLoginValidateMock);
+  });
+})

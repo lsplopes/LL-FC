@@ -38,3 +38,7 @@ export const failedResponseByMissing = {
 export const failedResponseByWrong = {
   message: 'Incorrect email or password'
 }
+
+export const successLoginValidateMock = {
+  role: 'admin'
+}

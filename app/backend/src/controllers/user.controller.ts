@@ -9,4 +9,9 @@ async function login(req: Request, res: Response) {
   return res.status(status).json(data);
 }
 
-export default { login };
+function loginValidation(req: Request, res: Response) {
+  const { userWithoutPassword } = req.body.user;
+  return res.status(200).json({ role: userWithoutPassword.role });
+}
+
+export default { login, loginValidation };
