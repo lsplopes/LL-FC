@@ -8,6 +8,8 @@ import MatchesModel from '../database/models/MatchesModel';
 import { IMatches } from '../interfaces/IMatches';
 import {
   successGetAllMatchesMock,
+  successGetAllTrueMatchesMock,
+  successGetAllFalseMatchesMock,
 } from './Mocks/MatchesMocks';
 
 import { Response } from 'superagent';
@@ -33,26 +35,42 @@ describe('/matches endpoint tests: ', () => {
     })
 
     chaiHttpResponse = await chai
-       .request(app).get('/teams')
+       .request(app).get('/matches')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
   });
 
-  // it('return successfully all teams', async () => {
-  //   before(async () => {
-  //     sinon
-  //       .stub(Teams, "findByPk")
-  //       .resolves(succsessTeamGetByIdMock as Teams);
-  //   });
+  it('return successfully all matches in progress', async () => {
+    before(async () => {
+      sinon
+        .stub(MatchesModel, "findAll")
+        .resolves(successGetAllTrueMatchesMock as IMatches[]);
+    });
 
-  //   after(()=>{
-  //     sinon.restore();
-  //   })
+    after(()=>{
+      sinon.restore();
+    })
 
-  //   chaiHttpResponse = await chai
-  //      .request(app).get('/teams/1')
+    chaiHttpResponse = await chai
+       .request(app).get('/matches?inProgress=true')
 
-  //   expect(chaiHttpResponse.status).to.be.equal(200);
-  // });
+    expect(chaiHttpResponse.status).to.be.equal(200);
+  });
   
+  it('return successfully all matches not in progress', async () => {
+    before(async () => {
+      sinon
+        .stub(MatchesModel, "findAll")
+        .resolves(successGetAllTrueMatchesMock as IMatches[]);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).get('/matches?inProgress=false')
+
+    expect(chaiHttpResponse.status).to.be.equal(200);
+  });
 });
