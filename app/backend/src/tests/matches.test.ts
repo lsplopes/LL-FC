@@ -10,9 +10,12 @@ import {
   successGetAllMatchesMock,
   successGetAllTrueMatchesMock,
   successGetAllFalseMatchesMock,
+  successMatchInsertion,
+  successMatchInsertionReturn,
 } from './Mocks/MatchesMocks';
 
 import { Response } from 'superagent';
+import { successRequest } from './Mocks/UserMocks';
 
 chai.use(chaiHttp);
 
@@ -61,7 +64,7 @@ describe('/matches endpoint tests: ', () => {
     before(async () => {
       sinon
         .stub(MatchesModel, "findAll")
-        .resolves(successGetAllTrueMatchesMock as IMatches[]);
+        .resolves(successGetAllFalseMatchesMock as IMatches[]);
     });
 
     after(()=>{
@@ -72,5 +75,27 @@ describe('/matches endpoint tests: ', () => {
        .request(app).get('/matches?inProgress=false')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+  });
+  
+  it('include successfully a new match', async () => {
+    before(async () => {
+      sinon
+        .stub(MatchesModel, "create")
+        .resolves(successMatchInsertionReturn as MatchesModel);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(successRequest)
+
+    const chaiHttpResponse2 = await chai
+       .request(app).post('/matches')
+       .set('Authorization', chaiHttpResponse.body.token)
+       .send(successMatchInsertion)
+
+    expect(chaiHttpResponse2.status).to.be.equal(201);
   });
 });

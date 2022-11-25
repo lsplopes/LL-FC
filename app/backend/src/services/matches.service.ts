@@ -1,6 +1,7 @@
 // import Teams from '../database/models/TeamsModel';
 import { IQuery } from '../interfaces/IQuery';
 import MatchesModel from '../database/models/MatchesModel';
+import { IMatchesPost } from '../interfaces/IMatches';
 
 async function getAll(inProgress?: string) {
   let queryParams: IQuery = {
@@ -23,6 +24,15 @@ async function getAll(inProgress?: string) {
   return { status: 200, data };
 }
 
+async function createMatch(params: IMatchesPost) {
+  const { dataValues } = await MatchesModel.create({
+    ...params,
+    inProgress: true,
+  });
+  return { status: 201, dataValues };
+}
+
 export default {
   getAll,
+  createMatch,
 };

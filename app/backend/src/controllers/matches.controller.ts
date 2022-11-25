@@ -7,6 +7,11 @@ async function getAll(req: Request, res: Response) {
   return res.status(status).json(data);
 }
 
+async function createMatch(req: Request, res: Response) {
+  const { status, dataValues } = await matchesService.createMatch(req.body);
+  return res.status(status).json(dataValues);
+}
 export default {
   getAll,
+  createMatch,
 };

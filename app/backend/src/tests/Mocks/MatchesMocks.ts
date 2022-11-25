@@ -90,3 +90,19 @@ export const successGetAllFalseMatchesMock = [
     }
   }
 ]
+
+export const successMatchInsertion = {
+  "homeTeam": 16,
+  "awayTeam": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+export const successMatchInsertionReturn = {
+  "id": 1,
+  "homeTeam": 16,
+  "homeTeamGoals": 2,
+  "awayTeam": 8,
+  "awayTeamGoals": 2,
+  "inProgress": true,
+}
