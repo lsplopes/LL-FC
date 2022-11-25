@@ -32,7 +32,16 @@ async function createMatch(params: IMatchesPost) {
   return { status: 201, dataValues };
 }
 
+async function finishMatch(id: string) {
+  await MatchesModel.update(
+    { inProgress: false },
+    { where: { id } },
+  );
+  return { status: 200, message: 'Finished' };
+}
+
 export default {
   getAll,
   createMatch,
+  finishMatch,
 };

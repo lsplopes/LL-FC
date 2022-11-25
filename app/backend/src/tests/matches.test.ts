@@ -98,4 +98,21 @@ describe('/matches endpoint tests: ', () => {
 
     expect(chaiHttpResponse2.status).to.be.equal(201);
   });
+
+  it('return successfully finish a match', async () => {
+    before(async () => {
+      sinon
+        .stub(MatchesModel, "update")
+        .resolves([0]);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).patch('/matches/1/finish')
+
+    expect(chaiHttpResponse.status).to.be.equal(200);
+  });
 });

@@ -11,7 +11,15 @@ async function createMatch(req: Request, res: Response) {
   const { status, dataValues } = await matchesService.createMatch(req.body);
   return res.status(status).json(dataValues);
 }
+
+async function finishMatch(req: Request, res: Response) {
+  const { id } = req.params;
+  const { status, message } = await matchesService.finishMatch(id);
+  return res.status(status).json({ message });
+}
+
 export default {
   getAll,
   createMatch,
+  finishMatch,
 };
