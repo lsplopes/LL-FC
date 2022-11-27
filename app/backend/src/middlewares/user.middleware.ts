@@ -18,8 +18,13 @@ function validateToken(req: Request, res: Response, next: NextFunction) {
   if (!authorization) {
     return res.status(401).json({ message: 'Token not found' });
   }
-  const data = jwt.verify(authorization, process.env.JWT_SECRET as string);
-  req.body.user = data;
+  try {
+    const data = jwt.verify(authorization, process.env.JWT_SECRET as string);
+    req.body.user = data;
+  } catch (error) {
+    const message = { message: 'Token must be a valid token' };
+    return res.status(401).json(message);
+  }
   next();
 }
 

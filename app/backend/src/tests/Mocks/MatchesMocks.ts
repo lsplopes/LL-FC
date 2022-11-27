@@ -106,3 +106,10 @@ export const successMatchInsertionReturn = {
   "awayTeamGoals": 2,
   "inProgress": true,
 }
+
+export const failedMatchInsertionEqualTeams = {
+  "homeTeam": 8,
+  "awayTeam": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}

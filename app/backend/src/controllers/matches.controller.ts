@@ -8,8 +8,8 @@ async function getAll(req: Request, res: Response) {
 }
 
 async function createMatch(req: Request, res: Response) {
-  const { status, dataValues } = await matchesService.createMatch(req.body);
-  return res.status(status).json(dataValues);
+  const { status, message } = await matchesService.createMatch(req.body);
+  return res.status(status).json(message);
 }
 
 async function finishMatch(req: Request, res: Response) {

@@ -29,7 +29,7 @@ async function createMatch(params: IMatchesPost) {
     ...params,
     inProgress: true,
   });
-  return { status: 201, dataValues };
+  return { status: 201, message: dataValues };
 }
 
 async function finishMatch(id: string) {

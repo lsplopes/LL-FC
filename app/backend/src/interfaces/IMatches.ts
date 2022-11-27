@@ -6,8 +6,8 @@ export interface IMatches extends MatchesModel {
 }
 
 export interface IMatchesPost {
-  homeTeam: number,
-  awayTeam: number,
+  homeTeam: string,
+  awayTeam: string,
   homeTeamGoals: number,
   awayTeamGoals: number,
 }

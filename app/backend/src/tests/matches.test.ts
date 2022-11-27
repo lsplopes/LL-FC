@@ -12,6 +12,7 @@ import {
   successGetAllFalseMatchesMock,
   successMatchInsertion,
   successMatchInsertionReturn,
+  failedMatchInsertionEqualTeams,
 } from './Mocks/MatchesMocks';
 
 import { Response } from 'superagent';
@@ -97,6 +98,26 @@ describe('/matches endpoint tests: ', () => {
        .send(successMatchInsertion)
 
     expect(chaiHttpResponse2.status).to.be.equal(201);
+  });
+  
+  it('Tries to include new match with a invalid Token', async () => {
+    const chaiHttpResponse2 = await chai
+       .request(app).post('/matches')
+       .set('Authorization', 'invalidToken')
+       .send(successMatchInsertion)
+
+    expect(chaiHttpResponse2.status).to.be.equal(401);
+  });
+  
+  it('Tries to include new match with equal teams', async () => {
+    chaiHttpResponse = await chai
+       .request(app).post('/login').send(successRequest)
+    const chaiHttpResponse2 = await chai
+       .request(app).post('/matches')
+       .set('Authorization', chaiHttpResponse.body.token)
+       .send(failedMatchInsertionEqualTeams)
+
+    expect(chaiHttpResponse2.status).to.be.equal(422);
   });
 
   it('return successfully finish a match', async () => {
