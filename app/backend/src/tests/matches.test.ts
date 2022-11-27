@@ -120,7 +120,7 @@ describe('/matches endpoint tests: ', () => {
     expect(chaiHttpResponse2.status).to.be.equal(422);
   });
 
-  it('return successfully finish a match', async () => {
+  it('successfully finish a match', async () => {
     before(async () => {
       sinon
         .stub(MatchesModel, "update")
@@ -133,6 +133,23 @@ describe('/matches endpoint tests: ', () => {
 
     chaiHttpResponse = await chai
        .request(app).patch('/matches/1/finish')
+
+    expect(chaiHttpResponse.status).to.be.equal(200);
+  });
+
+  it('successfully update a match', async () => {
+    before(async () => {
+      sinon
+        .stub(MatchesModel, "update")
+        .resolves([0]);
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).patch('/matches/1')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
   });

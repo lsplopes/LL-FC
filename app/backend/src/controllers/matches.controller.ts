@@ -18,8 +18,17 @@ async function finishMatch(req: Request, res: Response) {
   return res.status(status).json({ message });
 }
 
+async function updateMatch(req: Request, res: Response) {
+  console.log('entrou em controller');
+  const { id } = req.params;
+  const { status, message } = await matchesService.updateMatch(req.body, id);
+  console.log('status do service no controler: ', status);
+  return res.status(status).json(message);
+}
+
 export default {
   getAll,
   createMatch,
   finishMatch,
+  updateMatch,
 };

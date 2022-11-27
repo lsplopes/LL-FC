@@ -40,8 +40,20 @@ async function finishMatch(id: string) {
   return { status: 200, message: 'Finished' };
 }
 
+async function updateMatch(body: IMatchesPost, id: string) {
+  console.log('entrou em service');
+  const { homeTeamGoals, awayTeamGoals } = body;
+  await MatchesModel.update(
+    { homeTeamGoals, awayTeamGoals },
+    { where: { id } },
+  );
+  const message = { message: 'Match updated' };
+  return { status: 200, message };
+}
+
 export default {
   getAll,
   createMatch,
   finishMatch,
+  updateMatch,
 };
