@@ -9,6 +9,7 @@ import Matches from '../database/models/MatchesModel'
 import {
   successHomeResultMock,
   successAwayResultMock,
+  successResultMock,
   teamsMocks,
   matchesMock,
 } from './Mocks/LeaderBoardMocks';
@@ -65,5 +66,26 @@ describe('/leaderboard endpoint tests: ', () => {
 
     expect(chaiHttpResponse.status).to.be.equal(200);
     expect(chaiHttpResponse.body).to.be.deep.equal(successAwayResultMock);
+  });
+
+  it('return all teams successfully', async () => {
+    before(async () => {
+      sinon
+        .stub(Teams, "findAll")
+        .resolves(teamsMocks as Teams[]);
+      sinon
+        .stub(Matches, "findAll")
+        .resolves(matchesMock as IMatches[])
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).get('/leaderboard')
+
+    expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successResultMock);
   });
 })

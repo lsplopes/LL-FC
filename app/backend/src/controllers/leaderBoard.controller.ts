@@ -11,7 +11,13 @@ async function getAwayTeamLeaders(req: Request, res: Response) {
   return res.status(status).json(message);
 }
 
+async function getTeamLeaders(req: Request, res: Response) {
+  const { status, message } = await leaderBoardService.getTeamLeaders();
+  return res.status(status).json(message);
+}
+
 export default {
   getHomeTeamLeaders,
   getAwayTeamLeaders,
+  getTeamLeaders,
 };

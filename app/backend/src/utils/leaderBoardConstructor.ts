@@ -1,7 +1,20 @@
 import MatchesModel from '../database/models/MatchesModel';
 import { ITeams } from '../interfaces/ITeams';
 
-function typeGetter(match: MatchesModel, matchType?: string) {
+function anyTypeGetter(teamId: number, match: MatchesModel) {
+  if (teamId === match.homeTeam) {
+    return { principalTeam: match.homeTeam,
+      principalGoals: match.homeTeamGoals,
+      secondaryGoals: match.awayTeamGoals,
+    };
+  }
+  return { principalTeam: match.awayTeam,
+    principalGoals: match.awayTeamGoals,
+    secondaryGoals: match.homeTeamGoals,
+  };
+}
+
+function typeGetter(teamId: number, match: MatchesModel, matchType?: string) {
   if (matchType === 'home') {
     return { principalTeam: match.homeTeam,
       principalGoals: match.homeTeamGoals,
@@ -14,16 +27,13 @@ function typeGetter(match: MatchesModel, matchType?: string) {
       secondaryGoals: match.homeTeamGoals,
     };
   }
-  return { principalTeam: match.awayTeam,
-    principalGoals: match.awayTeamGoals,
-    secondaryGoals: match.homeTeamGoals,
-  };
+  return anyTypeGetter(teamId, match);
 }
 
 function totalPointsGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let points = 0;
   matches.forEach((match) => {
-    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(match, matchType);
+    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId && principalGoals > secondaryGoals) {
       points += 3;
     }
@@ -37,7 +47,7 @@ function totalPointsGetter(teamId: number, matches: MatchesModel[], matchType?: 
 function totalVictoriesGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let victories = 0;
   matches.forEach((match) => {
-    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(match, matchType);
+    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId && principalGoals > secondaryGoals) {
       victories += 1;
     }
@@ -48,7 +58,7 @@ function totalVictoriesGetter(teamId: number, matches: MatchesModel[], matchType
 function totalDrawsGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let draws = 0;
   matches.forEach((match) => {
-    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(match, matchType);
+    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId && principalGoals === secondaryGoals) {
       draws += 1;
     }
@@ -59,7 +69,7 @@ function totalDrawsGetter(teamId: number, matches: MatchesModel[], matchType?: s
 function totalLossesGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let losses = 0;
   matches.forEach((match) => {
-    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(match, matchType);
+    const { principalTeam, principalGoals, secondaryGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId && principalGoals < secondaryGoals) {
       losses += 1;
     }
@@ -70,7 +80,7 @@ function totalLossesGetter(teamId: number, matches: MatchesModel[], matchType?: 
 function goalsFavorGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let goals = 0;
   matches.forEach((match) => {
-    const { principalTeam, principalGoals } = typeGetter(match, matchType);
+    const { principalTeam, principalGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId) {
       goals += principalGoals;
     }
@@ -81,7 +91,7 @@ function goalsFavorGetter(teamId: number, matches: MatchesModel[], matchType?: s
 function goalsOwnGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   let goals = 0;
   matches.forEach((match) => {
-    const { principalTeam, secondaryGoals } = typeGetter(match, matchType);
+    const { principalTeam, secondaryGoals } = typeGetter(teamId, match, matchType);
     if (principalTeam === teamId) {
       goals += secondaryGoals;
     }
@@ -92,7 +102,7 @@ function goalsOwnGetter(teamId: number, matches: MatchesModel[], matchType?: str
 function efficiencyGetter(teamId: number, matches: MatchesModel[], matchType?: string) {
   const P = totalPointsGetter(teamId, matches, matchType);
   const J = matches.filter((match) => {
-    const { principalTeam } = typeGetter(match, matchType);
+    const { principalTeam } = typeGetter(teamId, match, matchType);
     return principalTeam === teamId;
   }).length;
   const efficiency = (P / (J * 3)) * 100;
@@ -102,7 +112,7 @@ function efficiencyGetter(teamId: number, matches: MatchesModel[], matchType?: s
 function totalGamesGetter(team: ITeams, matches: MatchesModel[], matchType?: string) {
   if (matchType === 'home') return matches.filter((match) => match.homeTeam === team.id).length;
   if (matchType === 'away') return matches.filter((match) => match.awayTeam === team.id).length;
-  return matches.filter((match) => (match.awayTeam || match.homeTeam) === team.id).length;
+  return matches.filter((match) => match.awayTeam === team.id || match.homeTeam === team.id).length;
 }
 
 function lbConstructor(teams: ITeams[], matches: MatchesModel[], matchType?: string) {
