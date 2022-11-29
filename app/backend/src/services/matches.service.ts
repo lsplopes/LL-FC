@@ -1,4 +1,3 @@
-// import Teams from '../database/models/TeamsModel';
 import { IQuery } from '../interfaces/IQuery';
 import MatchesModel from '../database/models/MatchesModel';
 import { IMatchesPost } from '../interfaces/IMatches';
