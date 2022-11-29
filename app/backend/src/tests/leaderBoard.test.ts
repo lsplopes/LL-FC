@@ -7,7 +7,8 @@ import App from '../app';
 import Teams from '../database/models/TeamsModel';
 import Matches from '../database/models/MatchesModel'
 import {
-  successResultMock,
+  successHomeResultMock,
+  successAwayResultMock,
   teamsMocks,
   matchesMock,
 } from './Mocks/LeaderBoardMocks';
@@ -21,10 +22,10 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('/login endpoint tests: ', () => {
+describe('/leaderboard endpoint tests: ', () => {
   let chaiHttpResponse: Response;
 
-  it('return success', async () => {
+  it('return HomeTeam successfully', async () => {
     before(async () => {
       sinon
         .stub(Teams, "findAll")
@@ -42,6 +43,27 @@ describe('/login endpoint tests: ', () => {
        .request(app).get('/leaderboard/home')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
-    expect(chaiHttpResponse.body).to.be.deep.equal(successResultMock);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successHomeResultMock);
+  });
+
+  it('return HomeTeam successfully', async () => {
+    before(async () => {
+      sinon
+        .stub(Teams, "findAll")
+        .resolves(teamsMocks as Teams[]);
+      sinon
+        .stub(Matches, "findAll")
+        .resolves(matchesMock as IMatches[])
+    });
+
+    after(()=>{
+      sinon.restore();
+    })
+
+    chaiHttpResponse = await chai
+       .request(app).get('/leaderboard/away')
+
+    expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successAwayResultMock);
   });
 })
