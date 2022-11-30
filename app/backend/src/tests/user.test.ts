@@ -29,20 +29,17 @@ describe('/login endpoint tests: ', () => {
   let chaiHttpResponse: Response;
 
   it('return success', async () => {
-    before(async () => {
-      sinon
-        .stub(User, "findOne")
-        .resolves(userDataMock as User);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+    const stub = sinon
+      .stub(User, "findOne")
+      .resolves(userDataMock as any);
 
     chaiHttpResponse = await chai
        .request(app).post('/login').send(successRequest)
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(Object.keys(chaiHttpResponse.body)[0]).to.be.deep.equal('token');
+
+    stub.restore();
   });
 
   it('return fail by missing password', async () => {
@@ -62,39 +59,31 @@ describe('/login endpoint tests: ', () => {
   });
 
   it('return fail by wrong password', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(User, "findOne")
-        .resolves(userDataMock as User);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+        .resolves(userDataMock as any);
 
     chaiHttpResponse = await chai
        .request(app).post('/login').send(failedRequestByWrongPassword)
 
     expect(chaiHttpResponse.status).to.be.equal(401);
     expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByWrong);
+
+    stub.restore();
   });
 
   it('return fail by wrong email', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(User, "findOne")
         .resolves(null);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
 
     chaiHttpResponse = await chai
        .request(app).post('/login').send(failedRequestByWrongEmail)
 
     expect(chaiHttpResponse.status).to.be.equal(401);
     expect(chaiHttpResponse.body).to.be.deep.equal(failedResponseByWrong);
+
+    stub.restore();
   });
 });
 
@@ -102,15 +91,9 @@ describe('Test of the /login/validate endpoint', () => {
   let chaiHttpResponse: Response;
 
   it('return success', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(User, "findOne")
-        .resolves(userDataMock as User);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+        .resolves(userDataMock as any);
 
     chaiHttpResponse = await chai
        .request(app).post('/login').send(successRequest)
@@ -120,5 +103,7 @@ describe('Test of the /login/validate endpoint', () => {
       .set('Authorization', chaiHttpResponse.body.token);
 
     expect(chaiHttpResponse2.body).to.be.deep.equal(successLoginValidateMock);
+
+    stub.restore();
   });
 })

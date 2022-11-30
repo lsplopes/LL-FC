@@ -24,22 +24,21 @@ const { app } = new App();
 const { expect } = chai;
 
 describe('/leaderboard endpoint tests: ', () => {
+  beforeEach(async () => {
+    sinon
+      .stub(Teams, "findAll")
+      .resolves(teamsMocks as Teams[]);
+    sinon
+      .stub(Matches, "findAll")
+      .resolves(matchesMock as IMatches[])
+  });
+
+  afterEach(()=>{
+    sinon.restore();
+  })
   let chaiHttpResponse: Response;
 
   it('return HomeTeam successfully', async () => {
-    before(async () => {
-      sinon
-        .stub(Teams, "findAll")
-        .resolves(teamsMocks as Teams[]);
-      sinon
-        .stub(Matches, "findAll")
-        .resolves(matchesMock as IMatches[])
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
-
     chaiHttpResponse = await chai
        .request(app).get('/leaderboard/home')
 
@@ -48,19 +47,6 @@ describe('/leaderboard endpoint tests: ', () => {
   });
 
   it('return HomeTeam successfully', async () => {
-    before(async () => {
-      sinon
-        .stub(Teams, "findAll")
-        .resolves(teamsMocks as Teams[]);
-      sinon
-        .stub(Matches, "findAll")
-        .resolves(matchesMock as IMatches[])
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
-
     chaiHttpResponse = await chai
        .request(app).get('/leaderboard/away')
 
@@ -69,19 +55,6 @@ describe('/leaderboard endpoint tests: ', () => {
   });
 
   it('return all teams successfully', async () => {
-    before(async () => {
-      sinon
-        .stub(Teams, "findAll")
-        .resolves(teamsMocks as Teams[]);
-      sinon
-        .stub(Matches, "findAll")
-        .resolves(matchesMock as IMatches[])
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
-
     chaiHttpResponse = await chai
        .request(app).get('/leaderboard')
 

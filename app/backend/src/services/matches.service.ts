@@ -40,7 +40,6 @@ async function finishMatch(id: string) {
 }
 
 async function updateMatch(body: IMatchesPost, id: string) {
-  console.log('entrou em service');
   const { homeTeamGoals, awayTeamGoals } = body;
   await MatchesModel.update(
     { homeTeamGoals, awayTeamGoals },

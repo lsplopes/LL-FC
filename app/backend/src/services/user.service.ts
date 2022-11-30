@@ -11,12 +11,11 @@ async function login(credentials: UserCredentials) {
   const info = await User.findOne({
     where: { email: credentials.email },
   });
-  if (!info || !compareSync(credentials.password, info.password)) {
+  if (!info || !compareSync(credentials.password, info.dataValues.password)) {
     return { status: 401, data: { message: 'Incorrect email or password' } };
   }
-  const { password: _, ...userWithoutPassword } = info.dataValues;
-
-  const token = jwt.sign({ userWithoutPassword }, process.env.JWT_SECRET as string, config);
+  const { password: _, ...user } = info.dataValues;
+  const token = jwt.sign({ user }, process.env.JWT_SECRET as string, config);
   const data = { token };
   return { status: 200, data };
 }

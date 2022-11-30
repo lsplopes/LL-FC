@@ -1,10 +1,10 @@
-import matchesService from './matches.service';
-import teamService from './teams.service';
+import Teams from '../database/models/TeamsModel';
+import MatchesModel from '../database/models/MatchesModel';
 import lbGetter from '../utils/leaderBoardConstructor';
 
 async function getTeamLeaders(matchType?: string) {
-  const { data: teams } = await teamService.getAll();
-  const { data: matches } = await matchesService.getAll('false');
+  const teams = await Teams.findAll();
+  const matches = await MatchesModel.findAll({ where: { inProgress: 'false' } });
   const message = lbGetter(teams, matches, matchType);
   return { status: 200, message };
 }

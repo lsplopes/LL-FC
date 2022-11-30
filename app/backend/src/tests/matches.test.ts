@@ -13,6 +13,8 @@ import {
   successMatchInsertion,
   successMatchInsertionReturn,
   failedMatchInsertionEqualTeams,
+  finishedMessageMock,
+  updatedMessageMock,
 } from './Mocks/MatchesMocks';
 
 import { Response } from 'superagent';
@@ -28,66 +30,51 @@ describe('/matches endpoint tests: ', () => {
   let chaiHttpResponse: Response;
 
   it('return successfully all matches', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(MatchesModel, "findAll")
         .resolves(successGetAllMatchesMock as IMatches[]);
-    });
 
-    after(()=>{
-      sinon.restore();
-    })
-
+        
     chaiHttpResponse = await chai
-       .request(app).get('/matches')
-
+    .request(app).get('/matches')
+    
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successGetAllMatchesMock);
+    stub.restore();
   });
 
   it('return successfully all matches in progress', async () => {
-    before(async () => {
-      sinon
-        .stub(MatchesModel, "findAll")
-        .resolves(successGetAllTrueMatchesMock as IMatches[]);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+    const stub = sinon
+      .stub(MatchesModel, "findAll")
+      .resolves(successGetAllTrueMatchesMock as IMatches[]);
 
     chaiHttpResponse = await chai
        .request(app).get('/matches?inProgress=true')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successGetAllTrueMatchesMock);
+
+    stub.restore();
   });
   
   it('return successfully all matches not in progress', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(MatchesModel, "findAll")
         .resolves(successGetAllFalseMatchesMock as IMatches[]);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
 
     chaiHttpResponse = await chai
        .request(app).get('/matches?inProgress=false')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(successGetAllFalseMatchesMock);
+
+    stub.restore();
   });
   
   it('include successfully a new match', async () => {
-    before(async () => {
-      sinon
-        .stub(MatchesModel, "create")
-        .resolves(successMatchInsertionReturn as MatchesModel);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+    const stub = sinon
+      .stub(MatchesModel, "create")
+      .resolves(successMatchInsertionReturn as MatchesModel);
 
     chaiHttpResponse = await chai
        .request(app).post('/login').send(successRequest)
@@ -98,6 +85,9 @@ describe('/matches endpoint tests: ', () => {
        .send(successMatchInsertion)
 
     expect(chaiHttpResponse2.status).to.be.equal(201);
+    expect(chaiHttpResponse2.body).to.be.deep.equal('');
+
+    stub.restore();
   });
   
   it('Tries to include new match with a invalid Token', async () => {
@@ -121,36 +111,30 @@ describe('/matches endpoint tests: ', () => {
   });
 
   it('successfully finish a match', async () => {
-    before(async () => {
-      sinon
-        .stub(MatchesModel, "update")
-        .resolves([0]);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
+    const stub = sinon
+      .stub(MatchesModel, "update")
+      .resolves([0]);
 
     chaiHttpResponse = await chai
        .request(app).patch('/matches/1/finish')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(finishedMessageMock);
+
+    stub.restore();
   });
 
   it('successfully update a match', async () => {
-    before(async () => {
-      sinon
+    const stub = sinon
         .stub(MatchesModel, "update")
         .resolves([0]);
-    });
-
-    after(()=>{
-      sinon.restore();
-    })
 
     chaiHttpResponse = await chai
        .request(app).patch('/matches/1')
 
     expect(chaiHttpResponse.status).to.be.equal(200);
+    expect(chaiHttpResponse.body).to.be.deep.equal(updatedMessageMock);
+
+    stub.restore();
   });
 });

@@ -1,19 +1,19 @@
-export const succsessTeamGetAllMock = [
+export const successTeamGetAllMock = [
   {
-    "id": 1,
-    "teamName": "Avaí/Kindermann"
+    id: 1,
+    teamName: "Fake Team One"
   },
   {
-    "id": 2,
-    "teamName": "Bahia"
+    id: 2,
+    teamName: "Fake Team Two"
   },
   {
-    "id": 3,
-    "teamName": "Botafogo"
+    id: 3,
+    teamName: "Fake Team Three"
   }
 ]
 
-export const succsessTeamGetByIdMock = {
-    "id": 1,
-    "teamName": "Avaí/Kindermann"
+export const successTeamGetByIdMock = {
+    id: 1,
+    teamName: "Fake Team One"
   }

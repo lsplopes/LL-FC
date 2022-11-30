@@ -1,17 +1,5 @@
 export const successResultMock = [
   {
-    name: "Corinthians",
-    totalPoints: 15,
-    totalGames: 6,
-    totalVictories: 5,
-    totalDraws: 0,
-    totalLosses: 1,
-    goalsFavor: 14,
-    goalsOwn: 4,
-    goalsBalance: 10,
-    efficiency: "83.33"
-  },
-  {
     name: "Palmeiras",
     totalPoints: 13,
     totalGames: 5,
@@ -22,6 +10,18 @@ export const successResultMock = [
     goalsOwn: 5,
     goalsBalance: 12,
     efficiency: "86.67"
+  },
+  {
+    name: "Corinthians",
+    totalPoints: 12,
+    totalGames: 5,
+    totalVictories: 4,
+    totalDraws: 0,
+    totalLosses: 1,
+    goalsFavor: 12,
+    goalsOwn: 3,
+    goalsBalance: 9,
+    efficiency: "80.00"
   },
   {
     name: "Santos",
@@ -48,6 +48,18 @@ export const successResultMock = [
     efficiency: "66.67"
   },
   {
+    name: "Internacional",
+    totalPoints: 10,
+    totalGames: 5,
+    totalVictories: 3,
+    totalDraws: 1,
+    totalLosses: 1,
+    goalsFavor: 7,
+    goalsOwn: 6,
+    goalsBalance: 1,
+    efficiency: "66.67"
+  },
+  {
     name: "Real Brasília",
     totalPoints: 10,
     totalGames: 5,
@@ -58,18 +70,6 @@ export const successResultMock = [
     goalsOwn: 4,
     goalsBalance: 1,
     efficiency: "66.67"
-  },
-  {
-    name: "Internacional",
-    totalPoints: 10,
-    totalGames: 6,
-    totalVictories: 3,
-    totalDraws: 1,
-    totalLosses: 2,
-    goalsFavor: 8,
-    goalsOwn: 8,
-    goalsBalance: 0,
-    efficiency: "55.56"
   },
   {
     name: "São Paulo",
@@ -221,14 +221,14 @@ export const successAwayResultMock = [
   {
     name: "Internacional",
     totalPoints: 6,
-    totalGames: 3,
+    totalGames: 2,
     totalVictories: 2,
     totalDraws: 0,
-    totalLosses: 1,
-    goalsFavor: 4,
-    goalsOwn: 2,
-    goalsBalance: 2,
-    efficiency: "66.67"
+    totalLosses: 0,
+    goalsFavor: 3,
+    goalsOwn: 0,
+    goalsBalance: 3,
+    efficiency: "100.00"
   },
   {
     name: "São José-SP",
@@ -386,7 +386,7 @@ export const successAwayResultMock = [
     goalsBalance: -9,
     efficiency: "0.00"
   }
-];
+]
 
 export const successHomeResultMock = [
   {
@@ -402,18 +402,6 @@ export const successHomeResultMock = [
     efficiency: "100.00"
   },
   {
-    name: "Corinthians",
-    totalPoints: 9,
-    totalGames: 3,
-    totalVictories: 3,
-    totalDraws: 0,
-    totalLosses: 0,
-    goalsFavor: 8,
-    goalsOwn: 2,
-    goalsBalance: 6,
-    efficiency: "100.00"
-  },
-  {
     name: "Palmeiras",
     totalPoints: 7,
     totalGames: 3,
@@ -424,6 +412,18 @@ export const successHomeResultMock = [
     goalsOwn: 5,
     goalsBalance: 5,
     efficiency: "77.78"
+  },
+  {
+    name: "Corinthians",
+    totalPoints: 6,
+    totalGames: 2,
+    totalVictories: 2,
+    totalDraws: 0,
+    totalLosses: 0,
+    goalsFavor: 6,
+    goalsOwn: 1,
+    goalsBalance: 5,
+    efficiency: "100.00"
   },
   {
     name: "Grêmio",
@@ -652,689 +652,323 @@ export const teamsMocks = [
 
 export const matchesMock = [
   {
-    id: 1,
-    homeTeam: 16,
-    homeTeamGoals: 1,
-    awayTeam: 8,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "São Paulo"
-    },
-    teamAway: {
-      teamName: "Grêmio"
-    }
+    "id": 1,
+    "homeTeam": 16,
+    "homeTeamGoals": 1,
+    "awayTeam": 8,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 2,
-    homeTeam: 9,
-    homeTeamGoals: 1,
-    awayTeam: 14,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Internacional"
-    },
-    teamAway: {
-      teamName: "Santos"
-    }
+    "id": 2,
+    "homeTeam": 9,
+    "homeTeamGoals": 1,
+    "awayTeam": 14,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 3,
-    homeTeam: 4,
-    homeTeamGoals: 3,
-    awayTeam: 11,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Corinthians"
-    },
-    teamAway: {
-      teamName: "Napoli-SC"
-    }
+    "id": 3,
+    "homeTeam": 4,
+    "homeTeamGoals": 3,
+    "awayTeam": 11,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 4,
-    homeTeam: 3,
-    homeTeamGoals: 0,
-    awayTeam: 2,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Botafogo"
-    },
-    teamAway: {
-      teamName: "Bahia"
-    }
+    "id": 4,
+    "homeTeam": 3,
+    "homeTeamGoals": 0,
+    "awayTeam": 2,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 5,
-    homeTeam: 7,
-    homeTeamGoals: 1,
-    awayTeam: 10,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Flamengo"
-    },
-    teamAway: {
-      teamName: "Minas Brasília"
-    }
+    "id": 5,
+    "homeTeam": 7,
+    "homeTeamGoals": 1,
+    "awayTeam": 10,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 6,
-    homeTeam: 5,
-    homeTeamGoals: 1,
-    awayTeam: 13,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Cruzeiro"
-    },
-    teamAway: {
-      teamName: "Real Brasília"
-    }
+    "id": 6,
+    "homeTeam": 5,
+    "homeTeamGoals": 1,
+    "awayTeam": 13,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 7,
-    homeTeam: 12,
-    homeTeamGoals: 2,
-    awayTeam: 6,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Palmeiras"
-    },
-    teamAway: {
-      teamName: "Ferroviária"
-    }
+    "id": 7,
+    "homeTeam": 12,
+    "homeTeamGoals": 2,
+    "awayTeam": 6,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 8,
-    homeTeam: 15,
-    homeTeamGoals: 0,
-    awayTeam: 1,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "São José-SP"
-    },
-    teamAway: {
-      teamName: "Avaí/Kindermann"
-    }
+    "id": 8,
+    "homeTeam": 15,
+    "homeTeamGoals": 0,
+    "awayTeam": 1,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 9,
-    homeTeam: 1,
-    homeTeamGoals: 0,
-    awayTeam: 12,
-    awayTeamGoals: 3,
-    inProgress: false,
-    teamHome: {
-      teamName: "Avaí/Kindermann"
-    },
-    teamAway: {
-      teamName: "Palmeiras"
-    }
+    "id": 9,
+    "homeTeam": 1,
+    "homeTeamGoals": 0,
+    "awayTeam": 12,
+    "awayTeamGoals": 3,
+    "inProgress": false,
   },
   {
-    id: 10,
-    homeTeam: 2,
-    homeTeamGoals: 0,
-    awayTeam: 9,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Bahia"
-    },
-    teamAway: {
-      teamName: "Internacional"
-    }
+    "id": 10,
+    "homeTeam": 2,
+    "homeTeamGoals": 0,
+    "awayTeam": 9,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 11,
-    homeTeam: 13,
-    homeTeamGoals: 1,
-    awayTeam: 3,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Real Brasília"
-    },
-    teamAway: {
-      teamName: "Botafogo"
-    }
+    "id": 11,
+    "homeTeam": 13,
+    "homeTeamGoals": 1,
+    "awayTeam": 3,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 12,
-    homeTeam: 6,
-    homeTeamGoals: 0,
-    awayTeam: 4,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Ferroviária"
-    },
-    teamAway: {
-      teamName: "Corinthians"
-    }
+    "id": 12,
+    "homeTeam": 6,
+    "homeTeamGoals": 0,
+    "awayTeam": 4,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 13,
-    homeTeam: 8,
-    homeTeamGoals: 2,
-    awayTeam: 5,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Grêmio"
-    },
-    teamAway: {
-      teamName: "Cruzeiro"
-    }
+    "id": 13,
+    "homeTeam": 8,
+    "homeTeamGoals": 2,
+    "awayTeam": 5,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 14,
-    homeTeam: 14,
-    homeTeamGoals: 2,
-    awayTeam: 16,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Santos"
-    },
-    teamAway: {
-      teamName: "São Paulo"
-    }
+    "id": 14,
+    "homeTeam": 14,
+    "homeTeamGoals": 2,
+    "awayTeam": 16,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 15,
-    homeTeam: 10,
-    homeTeamGoals: 0,
-    awayTeam: 15,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Minas Brasília"
-    },
-    teamAway: {
-      teamName: "São José-SP"
-    }
+    "id": 15,
+    "homeTeam": 10,
+    "homeTeamGoals": 0,
+    "awayTeam": 15,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 16,
-    homeTeam: 11,
-    homeTeamGoals: 0,
-    awayTeam: 7,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Napoli-SC"
-    },
-    teamAway: {
-      teamName: "Flamengo"
-    }
+    "id": 16,
+    "homeTeam": 11,
+    "homeTeamGoals": 0,
+    "awayTeam": 7,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 17,
-    homeTeam: 1,
-    homeTeamGoals: 2,
-    awayTeam: 8,
-    awayTeamGoals: 3,
-    inProgress: false,
-    teamHome: {
-      teamName: "Avaí/Kindermann"
-    },
-    teamAway: {
-      teamName: "Grêmio"
-    }
+    "id": 17,
+    "homeTeam": 1,
+    "homeTeamGoals": 2,
+    "awayTeam": 8,
+    "awayTeamGoals": 3,
+    "inProgress": false,
   },
   {
-    id: 18,
-    homeTeam: 12,
-    homeTeamGoals: 4,
-    awayTeam: 5,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Palmeiras"
-    },
-    teamAway: {
-      teamName: "Cruzeiro"
-    }
+    "id": 18,
+    "homeTeam": 12,
+    "homeTeamGoals": 4,
+    "awayTeam": 5,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 19,
-    homeTeam: 11,
-    homeTeamGoals: 2,
-    awayTeam: 2,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Napoli-SC"
-    },
-    teamAway: {
-      teamName: "Bahia"
-    }
+    "id": 19,
+    "homeTeam": 11,
+    "homeTeamGoals": 2,
+    "awayTeam": 2,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 20,
-    homeTeam: 7,
-    homeTeamGoals: 0,
-    awayTeam: 9,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Flamengo"
-    },
-    teamAway: {
-      teamName: "Internacional"
-    }
+    "id": 20,
+    "homeTeam": 7,
+    "homeTeamGoals": 0,
+    "awayTeam": 9,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 21,
-    homeTeam: 6,
-    homeTeamGoals: 3,
-    awayTeam: 13,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Ferroviária"
-    },
-    teamAway: {
-      teamName: "Real Brasília"
-    }
+    "id": 21,
+    "homeTeam": 6,
+    "homeTeamGoals": 3,
+    "awayTeam": 13,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 22,
-    homeTeam: 4,
-    homeTeamGoals: 3,
-    awayTeam: 3,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Corinthians"
-    },
-    teamAway: {
-      teamName: "Botafogo"
-    }
+    "id": 22,
+    "homeTeam": 4,
+    "homeTeamGoals": 3,
+    "awayTeam": 3,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 23,
-    homeTeam: 15,
-    homeTeamGoals: 2,
-    awayTeam: 16,
-    awayTeamGoals: 3,
-    inProgress: false,
-    teamHome: {
-      teamName: "São José-SP"
-    },
-    teamAway: {
-      teamName: "São Paulo"
-    }
+    "id": 23,
+    "homeTeam": 15,
+    "homeTeamGoals": 2,
+    "awayTeam": 16,
+    "awayTeamGoals": 3,
+    "inProgress": false,
   },
   {
-    id: 24,
-    homeTeam: 10,
-    homeTeamGoals: 2,
-    awayTeam: 14,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Minas Brasília"
-    },
-    teamAway: {
-      teamName: "Santos"
-    }
+    "id": 24,
+    "homeTeam": 10,
+    "homeTeamGoals": 2,
+    "awayTeam": 14,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 25,
-    homeTeam: 2,
-    homeTeamGoals: 0,
-    awayTeam: 6,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Bahia"
-    },
-    teamAway: {
-      teamName: "Ferroviária"
-    }
+    "id": 25,
+    "homeTeam": 2,
+    "homeTeamGoals": 0,
+    "awayTeam": 6,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 26,
-    homeTeam: 13,
-    homeTeamGoals: 1,
-    awayTeam: 1,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Real Brasília"
-    },
-    teamAway: {
-      teamName: "Avaí/Kindermann"
-    }
+    "id": 26,
+    "homeTeam": 13,
+    "homeTeamGoals": 1,
+    "awayTeam": 1,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 27,
-    homeTeam: 5,
-    homeTeamGoals: 1,
-    awayTeam: 15,
-    awayTeamGoals: 2,
-    inProgress: false,
-    teamHome: {
-      teamName: "Cruzeiro"
-    },
-    teamAway: {
-      teamName: "São José-SP"
-    }
+    "id": 27,
+    "homeTeam": 5,
+    "homeTeamGoals": 1,
+    "awayTeam": 15,
+    "awayTeamGoals": 2,
+    "inProgress": false,
   },
   {
-    id: 28,
-    homeTeam: 16,
-    homeTeamGoals: 3,
-    awayTeam: 7,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "São Paulo"
-    },
-    teamAway: {
-      teamName: "Flamengo"
-    }
+    "id": 28,
+    "homeTeam": 16,
+    "homeTeamGoals": 3,
+    "awayTeam": 7,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 29,
-    homeTeam: 9,
-    homeTeamGoals: 0,
-    awayTeam: 4,
-    awayTeamGoals: 4,
-    inProgress: false,
-    teamHome: {
-      teamName: "Internacional"
-    },
-    teamAway: {
-      teamName: "Corinthians"
-    }
+    "id": 29,
+    "homeTeam": 9,
+    "homeTeamGoals": 0,
+    "awayTeam": 4,
+    "awayTeamGoals": 4,
+    "inProgress": false,
   },
   {
-    id: 30,
-    homeTeam: 3,
-    homeTeamGoals: 0,
-    awayTeam: 12,
-    awayTeamGoals: 4,
-    inProgress: false,
-    teamHome: {
-      teamName: "Botafogo"
-    },
-    teamAway: {
-      teamName: "Palmeiras"
-    }
+    "id": 30,
+    "homeTeam": 3,
+    "homeTeamGoals": 0,
+    "awayTeam": 12,
+    "awayTeamGoals": 4,
+    "inProgress": false,
   },
   {
-    id: 31,
-    homeTeam: 8,
-    homeTeamGoals: 2,
-    awayTeam: 10,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Grêmio"
-    },
-    teamAway: {
-      teamName: "Minas Brasília"
-    }
+    "id": 31,
+    "homeTeam": 8,
+    "homeTeamGoals": 2,
+    "awayTeam": 10,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 32,
-    homeTeam: 14,
-    homeTeamGoals: 5,
-    awayTeam: 11,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Santos"
-    },
-    teamAway: {
-      teamName: "Napoli-SC"
-    }
+    "id": 32,
+    "homeTeam": 14,
+    "homeTeamGoals": 5,
+    "awayTeam": 11,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 33,
-    homeTeam: 1,
-    homeTeamGoals: 1,
-    awayTeam: 16,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Avaí/Kindermann"
-    },
-    teamAway: {
-      teamName: "São Paulo"
-    }
+    "id": 33,
+    "homeTeam": 1,
+    "homeTeamGoals": 1,
+    "awayTeam": 16,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 34,
-    homeTeam: 9,
-    homeTeamGoals: 3,
-    awayTeam: 6,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Internacional"
-    },
-    teamAway: {
-      teamName: "Ferroviária"
-    }
+    "id": 34,
+    "homeTeam": 9,
+    "homeTeamGoals": 3,
+    "awayTeam": 6,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 35,
-    homeTeam: 10,
-    homeTeamGoals: 1,
-    awayTeam: 5,
-    awayTeamGoals: 3,
-    inProgress: false,
-    teamHome: {
-      teamName: "Minas Brasília"
-    },
-    teamAway: {
-      teamName: "Cruzeiro"
-    }
+    "id": 35,
+    "homeTeam": 10,
+    "homeTeamGoals": 1,
+    "awayTeam": 5,
+    "awayTeamGoals": 3,
+    "inProgress": false,
   },
   {
-    id: 36,
-    homeTeam: 2,
-    homeTeamGoals: 0,
-    awayTeam: 7,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Bahia"
-    },
-    teamAway: {
-      teamName: "Flamengo"
-    }
+    "id": 36,
+    "homeTeam": 2,
+    "homeTeamGoals": 0,
+    "awayTeam": 7,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 37,
-    homeTeam: 15,
-    homeTeamGoals: 0,
-    awayTeam: 13,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "São José-SP"
-    },
-    teamAway: {
-      teamName: "Real Brasília"
-    }
+    "id": 37,
+    "homeTeam": 15,
+    "homeTeamGoals": 0,
+    "awayTeam": 13,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 38,
-    homeTeam: 14,
-    homeTeamGoals: 2,
-    awayTeam: 4,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Santos"
-    },
-    teamAway: {
-      teamName: "Corinthians"
-    }
+    "id": 38,
+    "homeTeam": 14,
+    "homeTeamGoals": 2,
+    "awayTeam": 4,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   },
   {
-    id: 39,
-    homeTeam: 3,
-    homeTeamGoals: 2,
-    awayTeam: 11,
-    awayTeamGoals: 0,
-    inProgress: false,
-    teamHome: {
-      teamName: "Botafogo"
-    },
-    teamAway: {
-      teamName: "Napoli-SC"
-    }
+    "id": 39,
+    "homeTeam": 3,
+    "homeTeamGoals": 2,
+    "awayTeam": 11,
+    "awayTeamGoals": 0,
+    "inProgress": false,
   },
   {
-    id: 40,
-    homeTeam: 12,
-    homeTeamGoals: 4,
-    awayTeam: 8,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Palmeiras"
-    },
-    teamAway: {
-      teamName: "Grêmio"
-    }
-  },
-  {
-    id: 41,
-    homeTeam: 16,
-    homeTeamGoals: 2,
-    awayTeam: 9,
-    awayTeamGoals: 0,
-    inProgress: true,
-    teamHome: {
-      teamName: "São Paulo"
-    },
-    teamAway: {
-      teamName: "Internacional"
-    }
-  },
-  {
-    id: 42,
-    homeTeam: 6,
-    homeTeamGoals: 1,
-    awayTeam: 1,
-    awayTeamGoals: 0,
-    inProgress: true,
-    teamHome: {
-      teamName: "Ferroviária"
-    },
-    teamAway: {
-      teamName: "Avaí/Kindermann"
-    }
-  },
-  {
-    id: 43,
-    homeTeam: 11,
-    homeTeamGoals: 0,
-    awayTeam: 10,
-    awayTeamGoals: 0,
-    inProgress: true,
-    teamHome: {
-      teamName: "Napoli-SC"
-    },
-    teamAway: {
-      teamName: "Minas Brasília"
-    }
-  },
-  {
-    id: 44,
-    homeTeam: 7,
-    homeTeamGoals: 2,
-    awayTeam: 15,
-    awayTeamGoals: 2,
-    inProgress: true,
-    teamHome: {
-      teamName: "Flamengo"
-    },
-    teamAway: {
-      teamName: "São José-SP"
-    }
-  },
-  {
-    id: 45,
-    homeTeam: 5,
-    homeTeamGoals: 1,
-    awayTeam: 3,
-    awayTeamGoals: 1,
-    inProgress: true,
-    teamHome: {
-      teamName: "Cruzeiro"
-    },
-    teamAway: {
-      teamName: "Botafogo"
-    }
-  },
-  {
-    id: 46,
-    homeTeam: 4,
-    homeTeamGoals: 1,
-    awayTeam: 12,
-    awayTeamGoals: 1,
-    inProgress: true,
-    teamHome: {
-      teamName: "Corinthians"
-    },
-    teamAway: {
-      teamName: "Palmeiras"
-    }
-  },
-  {
-    id: 47,
-    homeTeam: 8,
-    homeTeamGoals: 1,
-    awayTeam: 14,
-    awayTeamGoals: 2,
-    inProgress: true,
-    teamHome: {
-      teamName: "Grêmio"
-    },
-    teamAway: {
-      teamName: "Santos"
-    }
-  },
-  {
-    id: 48,
-    homeTeam: 13,
-    homeTeamGoals: 1,
-    awayTeam: 2,
-    awayTeamGoals: 1,
-    inProgress: true,
-    teamHome: {
-      teamName: "Real Brasília"
-    },
-    teamAway: {
-      teamName: "Bahia"
-    }
-  },
-  {
-    id: 49,
-    homeTeam: 4,
-    homeTeamGoals: 2,
-    awayTeam: 9,
-    awayTeamGoals: 1,
-    inProgress: false,
-    teamHome: {
-      teamName: "Corinthians"
-    },
-    teamAway: {
-      teamName: "Internacional"
-    }
+    "id": 40,
+    "homeTeam": 12,
+    "homeTeamGoals": 4,
+    "awayTeam": 8,
+    "awayTeamGoals": 1,
+    "inProgress": false,
   }
 ]
