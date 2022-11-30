@@ -7,6 +7,10 @@ Este projeto foi desenvolvido no curso de Desenvolvimento Web Full Stack da Tryb
 
 Neste projeto foi passada uma estrutura de um APP já com o FrontEnd pronto onde minha função era desenvolver todas as camadas de BackEnd para o funcionamento fluido do Front-End.
 
+Metodologias aplicadas:
+- TDD - Test Driven Development;
+- POO - Programação Orientada a Objetos
+
 As tecnologias empregadas neste projeto foram:
 - TypeScript
 - MySQL com Sequelize
@@ -41,6 +45,10 @@ To clarify, LL stands for Lucas Lopes!
 This project was developed in Trybe's Full Stack Web Development course.
 
 In this project, a structure of an APP with the FrontEnd ready was passed, where my role was to develop all the BackEnd layers for the smooth operation of the FrontEnd.
+
+Applied methodologies:
+- TDD - Test Driven Development;
+- OOP - Object Oriented Programming
 
 The technologies used in this project were:
 - TypeScript
