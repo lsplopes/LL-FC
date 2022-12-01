@@ -26,7 +26,7 @@ Utilizar o seguinte comando na raiz do projeto: npm run compose:up
 
 - Com node (necessário ter o MySQL instalado na máquina e preencher o arquivo .env conforme .env.example):
 Abra um terminal na pasta app/backend e outro terminal na pasta app/frontend.
-Em cada um dos terminais abertos, execute o comando: npm start
+Em cada um dos terminais abertos, execute o comando: npm install e depois npm start
 
 Para acessar o FrontEnd, basta entrar em seu navegador em http://localhost:3000/login
 Usuário válido: admin@admin.com
@@ -65,7 +65,7 @@ Use the following command in the root of the project: npm run compose:up
 
 - With node (must have MySQL installed on the machine and fill in the .env file as .env.example):
 Open a terminal in the app/backend folder and another terminal in the app/frontend folder.
-In each of the open terminals, run the command: npm start
+In each of the open terminals, run the command: npm install and then npm start
 
 To access FrontEnd, just enter your browser at http://localhost:3000/login
 Valid User: admin@admin.com
